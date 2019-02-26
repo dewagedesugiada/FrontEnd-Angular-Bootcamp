@@ -1,0 +1,8 @@
+<mat-form-field>
+  <mat-select (selectionChange)="onChange($event.value)" placeholder="BatchId*">
+    <mat-option *ngFor="let item of listBatch; let i = index" [value]="i">
+      {{ item.batchId }}
+
+    </mat-option>
+  </mat-select>
+</mat-form-field>

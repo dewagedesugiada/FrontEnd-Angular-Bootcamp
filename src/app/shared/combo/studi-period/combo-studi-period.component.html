@@ -1,0 +1,10 @@
+<div class="controles-container">
+  <mat-form-field>
+    <mat-select (selectionChange)="onChange($event.value)" placeholder="Studi Period*">
+      <mat-option *ngFor="let item of listStudi; let i = index" [value]="i">
+        {{ item.weekId}}
+
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

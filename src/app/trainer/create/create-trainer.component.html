@@ -1,0 +1,45 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>CREATE TRAINER</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form" class="normal-form">
+      <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile>
+          <div class="controles-container">
+            <mat-form-field>
+              <input type="text" formControlName="trainerId" matInput placeholder="ID Trainer*">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input type="text" formControlName="emailPhone" matInput placeholder="emailPhone">
+              <mat-error>invalid email address.</mat-error>
+            </mat-form-field>
+
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="controles-container">
+            <mat-form-field>
+              <input type="text" formControlName="firstName" matInput placeholder="First Name">
+              <mat-error>invalid email address.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input type="text" formControlName="lastName" matInput placeholder="Last Name">
+              <mat-error>invalid email address.</mat-error>
+            </mat-form-field>
+
+
+          </div>
+
+        </mat-grid-tile>
+      </mat-grid-list>
+      <div class="button-row">
+        <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="submit()"
+          type="submit">Submit</button>
+        <button mat-raised-button color="accent" type="reset">Reset</button>
+        <button mat-raised-button color="warn" (click)="onClose()">Batal</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,47 @@
+<div class="search-div">
+  <button mat-raised-button routerLink="/create-studi-period">
+    <mat-icon>add</mat-icon>Create
+  </button>
+  <mat-form-field class="search-form-field" floatLabel="never">
+    <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="list" matSort>
+
+    <ng-container matColumnDef="weekId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Week</mat-header-cell>
+      <mat-cell *matCellDef="let item">{{item.weekId}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Description</mat-header-cell>
+      <mat-cell *matCellDef="let item">{{item.description}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button routerLink="/edit-studi-period/{{row.weekId}}">
+          <mat-icon> launch </mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="onDelete(row.weekId)">
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container *matColumnDef="loading">
+      <mat-footer-cell *matFooterCelDef colspan="6">
+        Loading data...
+      </mat-footer-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    <mat-footer-row *matFooterRowDef="loading" [ngClass]="{'hide': list!=null}"></mat-footer-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]=[5,10,25,100] [pageSize]="5" showFirstLastButtons></mat-paginator>
+</div>

@@ -1,0 +1,33 @@
+<mat-card class="example-card">
+  <mat-card-header rowHeight="50px">
+    <mat-card-title>CREATE STUDI MATERIAL</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form" class="normal-form">
+      <mat-grid-list cols="2" rowHeight="30px">
+        <mat-grid-tile>
+
+          <app-bootcamp-bacth></app-bootcamp-bacth>
+
+        </mat-grid-tile>
+        <mat-grid-tile>
+
+          <app-combo-studi-period></app-combo-studi-period>
+
+        </mat-grid-tile>
+      </mat-grid-list>
+      <div class="controles-container">
+        <mat-form-field>
+          <textarea matInput formControlName="description" placeholder="Description*"></textarea>
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="button-row">
+        <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="submit()"
+          type="submit">Submit</button>
+        <button mat-raised-button color="accent" type="reset">Reset</button>
+        <button mat-raised-button color="warn" routerLink="/list-studi-material">Batal</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
